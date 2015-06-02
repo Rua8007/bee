@@ -1,0 +1,29 @@
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:User) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+     </tr>
+  </thead>
+  <tbody>
+   <% @business.try(:each) do |bs| %> 
+      <tr>
+        <td><%= link_to bs.project.id,bs.project %></td>
+        <td><%= bs.project.name %></td>
+        <td><%= bs.project.description %></td>
+        <td><%= bs.user.id %></td>
+        <td><%= bs.project.created_at%></td>
+        <% end %>
+  </tbody>
+</table>
+
+
+
+

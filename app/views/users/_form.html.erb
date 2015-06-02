@@ -1,0 +1,21 @@
+
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation %>
+   <div class="control-group">
+    <%= f.label :type ,class: 'control-label'%>
+    <div class="controls">
+    <%= f.select(:cat,options_for_select([['Manager','Manager'],['QA','QA'],['Dev','Dev']]))%>
+    </div>
+    </div> 
+
+  

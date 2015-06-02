@@ -1,0 +1,15 @@
+<h1>Editing User</h1><div class="row">
+	<div class="span6 offset3">
+	<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', :object => f.object %>
+
+			<%= render 'form',f: f %>
+			<%= f.submit "Update Profile", class: "btn btn-large btn-primary" %>
+
+			<%= link_to 'Show', @user,class: "btn btn-default btn-primary" %> 
+			<%= link_to 'Back', users_path,class: "btn btn-default btn-primary" %>
+
+		<% end %>
+	</div>
+</div>
+

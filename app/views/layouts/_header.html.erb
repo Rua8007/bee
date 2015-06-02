@@ -1,0 +1,40 @@
+<%- model_class = Project -%>
+<header class="navbar navbar-fixed-top">
+			<div class="navbar navbar-inner navbar-inverse ">
+				<div class="container">
+					<%= link_to "Bugzilla",root_path %>
+					<nav>
+						<ul class="nav nav-tabs pull-right tabhover ">
+						
+							<% if current_user %>
+						    <li>  <%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+						    <li><%= link_to "Logout", :logout, method: :post %></li>
+						     <li id="fat-menu" class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									Bugs <b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu home">
+										<li><%= link_to "Bugs List",'#' %></li>
+										<li><%= link_to "New Bug", new_bug_path %></li>
+										<li class="divider"></li>										
+									</ul>
+								</li>
+						    <li id="fat-menu" class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									Projects <b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu home">
+										<li><%= link_to "Projects List",projects_path %></li>
+										<li><%= link_to "New project", new_project_path %></li>
+										<li class="divider"></li>	
+									</ul>
+								</li>
+						    <% else %>
+						      <li><%= link_to "Sign Up", new_user_path %></li>
+						      <li> <%= link_to "Login", :login %></li>
+						    <% end %>
+						</ul>
+					</nav>
+				</div>
+			</div>
+	</header>
