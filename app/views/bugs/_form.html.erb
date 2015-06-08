@@ -1,36 +1,104 @@
 
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'form-control text-field',required:'true' %>
-    </div>
+      <div class="controls">
+        <%= f.text_field :title, :class => 'form-control text-field' %>
+      </div>
   </div>
   <div class="control-group">
     <%= f.label :deadline, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :deadline %>
-    </div>
+      <div class="controls">
+        <%= f.text_field :deadline %>
+      </div>
   </div>
   <div class="control-group ">
     <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :description, :class => 'form-control text-field',required:'true' %>
+      <div class="controls">
+        <%= f.text_field :description, :class => 'form-control text-field' %>
+      </div>
+  </div>
+  <div>
+    <div class="control-group ">
+      <%= f.label :project ,class: 'control-label' %><br />
+       <div class="controls">
+      <%= f.select :project_id, options_for_select(@project) %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :type, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :typ, :class => 'form-control text-field',required:'true' %>
-    </div>
+    <%= f.fields_for :solver do |sl| %>
+      <div>
+        <%= sl.label :solver ,class: 'control-label' %><br />
+        <%= sl.select :user_id, options_for_select(@solver) %>
+      </div>
+    <% end %>
   </div>
+
+  <div class="control-group display ">
+    <%= f.label :creator_id, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :creator_id, :value => @user %>
+      </div>
+  </div>
+ 
   <div class="control-group">
-    <%= f.label :status, :class => 'control-label' %>
+    <%= f.label :type ,class: 'control-label'%>
     <div class="controls">
-      <%= f.text_field :status, :class => 'form-control text-field',required:'true' %>
+      <div href="javascript:void(0);"class="controls" id="dropvalues">
+
+    <%= f.select(:typ,options_for_select([['Bug','Bug'],['Feature','Feature']]))%>
+    </div>
+  </div> 
+  </div>
+   
+   <div class="control-group">
+    <%= f.label :status ,class: 'control-label'%>
+    <div class="controls">
+      <div class="controls" id="bugtyp">
+
+    <%= f.select(:status,options_for_select([['New','New'],['Started','Started'],['Resolved','Resolved']]))%>
+    </div>
+  </div> 
+  </div>
+
+ 
+    <div class="controls">
+      <div class="controls display" id="featyp">
+
+    <%= f.select(:status,options_for_select([['New','New'],['Started','Started'],['Completed','Completed']]))%>
+    </div>
+  </div> 
+   <div class="control-group ">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :image, :class => 'form-control text-field' %>
     </div>
   </div>
 
 
 
-  
+
+
+
+<script>
+$(document).ready(function(){
+    $("#dropvalues").change(function(e){
+
+      var v = $('#bug_typ').val();
+      console.log(v);
+      if(v == 'Feature')
+       {
+          $('#featyp').removeClass('display');
+          $('#bugtyp').addClass('display');
+       }
+       else{
+        console.log();
+          $('#bugtyp').removeClass('display');
+          $('#featyp').addClass('display');
+       }
+    });
+});
+
+</script>
+
 

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
  	  has_many :businesses
      has_many :projects, through: :businesses
 
-     has_many :businesses
-     has_many :bugs, through: :businesses
+     has_many :creators
+     has_many :bugs, through: :creators
      
   
     validates :password, length: { minimum: 3 }

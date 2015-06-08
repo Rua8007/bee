@@ -1,2 +1,33 @@
-<h1>Bugs#show</h1>
-<p>Find me in app/views/bugs/show.html.erb</p>
+<%- model_class = Bug -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @solver.bug.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:deadline) %>:</strong></dt>
+  <dd><%= @solver.bug.deadline %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @solver.bug.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
+  <dd><%= @solver.bug.typ %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @solver.bug.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:creator) %>:</strong></dt>
+  <dd><%= @solver.bug.creator_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:solver) %>:</strong></dt>
+  <dd><%= @solver.user.id %></dd>
+   
+  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
+  <dd><%= image_tag @solver.bug.image_url(:thumb).to_s %></dd>
+
+</dl>
+
+
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              bugs_path, :class => 'btn btn-default'  %>
+
+ 
+  

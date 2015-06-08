@@ -1,2 +1,39 @@
-<h1>Bugs#index</h1>
-<p>Find me in app/views/bugs/index.html.erb</p>
+<%- model_class = Bug -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:deadline) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:type) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+     </tr>
+  </thead>
+  <tbody>
+   <% @bugs.try(:each) do |cr| %> 
+      <tr>
+        <td><%= link_to cr.id,cr %></td>
+        <td><%= cr.title %></td>
+        <td><%= cr.deadline %></td>
+        <td><%= cr.description %></td>
+        <td><%= cr.typ %></td>
+        <td><%= cr.status %></td>
+        <td><%= cr.image %></td>
+        <td><%= cr.created_at %></td>
+       
+       
+  
+        <% end %>
+  </tbody>
+</table>
+
+
+
+
+<%= link_to "New bug",new_bug_path , class: "btn btn-large btn-primary"%>
