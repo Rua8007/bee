@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20150608093921) do
     t.string   "cat"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "users_projects_joins", force: :cascade do |t|
     t.integer "user_id"
